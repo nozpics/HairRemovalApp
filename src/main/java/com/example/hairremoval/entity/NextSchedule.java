@@ -1,20 +1,20 @@
 package com.example.hairremoval.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "next_schedule")
 public class NextSchedule {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
 
-  private int user_id;  //ユーザーID　Userのuser_idと外部キーで紐づけ済み
-  private String body_part_name; //脱毛部位　BodyPartのnameと外部キーで紐づけ済み
-  private LocalDate next_date;  //次回脱毛日
+  @Column(name = "user_id")
+  private int user_id;  //ユーザーID　Userのuser_idと外部キーで紐づけ
+
+  @Column(name = "body_code")
+  private String body_code; //脱毛部位コード　BodyPartのbody_codeと外部キーで紐づけ済み
+
+  @Column(name = "next_date")
+  private LocalDate next_date;
 }
