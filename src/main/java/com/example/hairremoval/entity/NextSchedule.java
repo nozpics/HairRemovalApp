@@ -4,13 +4,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 @Entity
 @Table(name = "next_schedule")
-@Getter
-@Setter
+@Data
 public class NextSchedule {
 
   @Column(name = "user_id")

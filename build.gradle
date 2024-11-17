@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.5'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'org.seasar.doma.compile' version '1.1.0'
 }
 
 group = 'com.example.hairremoval'
@@ -32,6 +33,13 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	implementation 'org.seasar.doma:doma-core:2.53.0'
+	annotationProcessor 'org.seasar.doma:doma-processor:2.53.0'
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+	options.compilerArgs << '-Adoma.domain.converters=org.seasar.doma.DomainConverters'
 }
 
 tasks.named('test') {
