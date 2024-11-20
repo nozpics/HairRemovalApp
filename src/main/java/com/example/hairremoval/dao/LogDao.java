@@ -24,7 +24,7 @@ public interface LogDao {
   Log selectById(int userId, String bodyCode, int sessionCount);
 
   //新しい履歴をデータベースに挿入
-  @Insert
+  @Insert(sqlFile = true)
   int insert(Log log);
 
 }

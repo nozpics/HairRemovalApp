@@ -21,11 +21,11 @@ public interface UserDao {
   User selectByID(int userId);
 
   //新しいユーザー情報を挿入するため データベースの行数を表すため戻り値はint
-  @Insert
+  @Insert(sqlFile = true)
   int insert(User user);
 
   //既存のユーザー情報を更新するため
-  @Update
+  @Update(sqlFile = true)
   int update(User user);
 
 }

@@ -30,11 +30,11 @@ public interface NextScheduleDao {
   List<NextSchedule> selectByDate(LocalDate date);
 
   //新しい次回予定日をデータベースに挿入
-  @Insert
+  @Insert(sqlFile = true)
   int insert(NextSchedule nextSchedule);
 
   //既存の次回予定日を更新
-  @Update
+  @Update(sqlFile = true)
   int update(NextSchedule nextSchedule);
 
 }

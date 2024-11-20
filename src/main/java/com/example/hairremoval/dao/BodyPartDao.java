@@ -22,11 +22,11 @@ public interface BodyPartDao {
 
   //新しい脱毛部位をデータベースに挿入する
   //挿入された行数と挿入後のエンティティの状態を取得できる
-  @Insert
+  @Insert(sqlFile = true)
   int insert(BodyPart bodyPart);
 
   //既存の脱毛部位情報を更新する
-  @Update
+  @Update(sqlFile = true)
   int update(BodyPart bodyPart);
 
   //名前に基づいて脱毛部位を検索する
