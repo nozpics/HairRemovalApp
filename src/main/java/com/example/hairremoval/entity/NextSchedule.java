@@ -1,8 +1,8 @@
 package com.example.hairremoval.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import org.seasar.doma.Column;
+import org.seasar.doma.Entity;
+import org.seasar.doma.Table;
 import java.time.LocalDate;
 import lombok.Data;
 

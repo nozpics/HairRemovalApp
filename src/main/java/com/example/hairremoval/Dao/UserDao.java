@@ -18,7 +18,7 @@ public interface UserDao {
 
   //指定されたユーザーIDでユーザー情報を取得
   @Select
-  User selectByID(String userId);
+  User selectByID(int userId);
 
   //新しいユーザー情報を挿入するため データベースの行数を表すため戻り値はint
   @Insert

@@ -39,9 +39,16 @@ dependencies {
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
-	options.compilerArgs << '-Adoma.domain.converters=org.seasar.doma.DomainConverters'
 	}
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDirs = ['src/main/resources']
+		}
+	}
 }
