@@ -1,4 +1,4 @@
-package com.example.hairremoval.Dao;
+package com.example.hairremoval.dao;
 
 import com.example.hairremoval.config.DomaInjectConfig;
 import com.example.hairremoval.entity.NextSchedule;

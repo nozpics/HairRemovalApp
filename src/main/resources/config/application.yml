@@ -17,9 +17,9 @@ spring:
     encoding: UTF-8
 
   datasource:
-    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
-    username: test
-    password: test
+    url: jdbc:mysql://localhost:3306/hairremoval_app
+    username: root
+    password: 55730
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 

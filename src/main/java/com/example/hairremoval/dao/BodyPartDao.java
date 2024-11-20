@@ -1,4 +1,4 @@
-package com.example.hairremoval.Dao;
+package com.example.hairremoval.dao;
 
 import com.example.hairremoval.config.DomaInjectConfig;
 import com.example.hairremoval.entity.BodyPart;
@@ -18,7 +18,7 @@ public interface BodyPartDao {
 
   //指定されたボディコードで部位情報を取得
   @Select
-  BodyPart selectByCord(String bodyCode);
+  BodyPart selectByCode(String bodyCode);
 
   //新しい脱毛部位をデータベースに挿入する
   //挿入された行数と挿入後のエンティティの状態を取得できる
