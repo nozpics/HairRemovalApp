@@ -3,17 +3,19 @@ spring:
 #  profiles:
 #    active: dev
 
-  http:
-    encoding:
+  server:
+    servlet:
+      encoding:
       charset: UTF-8
       enabled: true
       force: true
-    thymeleaf:
-      cache: false
+
+  thymeleaf:
+    cache: false
 
   messages:
     basename: i18n/messages
-    cache-seconds: 0
+    cache-duration: 0
     encoding: UTF-8
 
   datasource:
@@ -21,6 +23,11 @@ spring:
     username: root
     password: 55730
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
 
 
 logging:
