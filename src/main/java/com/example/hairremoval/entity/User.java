@@ -14,11 +14,11 @@ public class User {
 
   @Id
   @Column(name = "user_id")
-  private int user_id;
+  private int userId;
 
   @Column(name = "user_name")
-  private String user_name;
+  private String userName;
 
   @Column(name = "password_hash")
-  private String password_hash;
+  private String passwordHash;
 }

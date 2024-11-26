@@ -14,7 +14,7 @@ public class BodyPart {
 
   @Id
   @Column(name = "body_code")
-  private String body_code;
+  private String bodyCode;
 
   @Column(name = "name")
   private String name;

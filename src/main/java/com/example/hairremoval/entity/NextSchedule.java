@@ -13,11 +13,11 @@ import lombok.Data;
 public class NextSchedule {
 
   @Column(name = "user_id")
-  private int user_id;  //ユーザーID　Userのuser_idと外部キーで紐づけ
+  private int userId;  //ユーザーID　Userのuser_idと外部キーで紐づけ
 
   @Column(name = "body_code")
-  private String body_code; //脱毛部位コード　BodyPartのbody_codeと外部キーで紐づけ済み
+  private String bodyCode; //脱毛部位コード　BodyPartのbody_codeと外部キーで紐づけ済み
 
   @Column(name = "next_date")
-  private LocalDate next_date;
+  private LocalDate nextDate;
 }
