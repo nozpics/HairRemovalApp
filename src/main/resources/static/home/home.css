@@ -12,20 +12,20 @@ header {
     margin: 0;
 }
 
-.user-info {
+.userInfo {
      text-align: right;
 }
 
-.account-link {
+.accountLink {
     margin-top: 20px;
 }
 
-.account-link a {
+.accountLink a {
     color: #007bff;
     text-decoration: none;
 }
 
-.account-link a:hover {
+.accountLink a:hover {
     text-decoration: underline;
 }
 
@@ -33,7 +33,7 @@ main {
     padding: 20px;
 }
 
-.data-link {
+.dataLink {
     display: flex;
     justify-content: flex-start;
     gap: 20px;
@@ -41,7 +41,7 @@ main {
     margin-bottom: 40px;
 }
 
-.data-link a {
+.dataLink a {
     color: #007bff;
     text-decoration: none;
     padding: 10px 20px;
@@ -49,12 +49,12 @@ main {
     border-radius: 5px;
 }
 
-.data-link a:hover {
+.dataLink a:hover {
     background-color: #007bff;
     color: #ffffff;
 }
 
-.next-schedule{
+.nextSchedule{
     display: flex;
     justify-content: flex-start;
     gap:80px;
