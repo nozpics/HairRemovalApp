@@ -46,13 +46,14 @@ public class HomeController {
       model.addAttribute("user",user);
 
     List<NextSchedule> nextSchedules = nextScheduleService.getAllNextSchedule();
-      NextSchedule nextSchedule = nextSchedules.get(0);
-      model.addAttribute("nextSchedule",nextSchedule);
-      model.addAttribute("bodyCode",nextSchedule.getBodyCode());
+//      NextSchedule nextSchedule = nextSchedules.get(0);
+      model.addAttribute("nextSchedules",nextSchedules);
+//      model.addAttribute("bodyCode",nextSchedule.getBodyCode());
+
 
     List<HairRemovalLog> hairRemovalLogs = hairRemovalLogService.getAllHairRemovalLog();
-      HairRemovalLog hairRemovalLog = hairRemovalLogs.get(0);
-      model.addAttribute("hairRemovalLog",hairRemovalLog);
+//      HairRemovalLog hairRemovalLog = hairRemovalLogs.get(0);
+      model.addAttribute("hairRemovalLogs",hairRemovalLogs);
 
     return "home";
   }

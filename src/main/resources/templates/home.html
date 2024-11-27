@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>脱毛管理画面</title>
-  <link rel="stylesheet" href="/static/home/home.css">
+  <link rel="stylesheet" th:href="@{/home/home.css}">
 </head>
 <body>
 <header>
@@ -27,22 +27,18 @@
   </div>
 
   <h2>次回の脱毛予定</h2>
-
-  <div class ="nextSchedule">
-    <div class="date">
-     <h3>日付</h3>
-     <p th:text="${nextSchedule.nextDate}"></p>
-     </div>
-
-    <div class="bodyPart">
-      <h3>部位</h3>
-      <p th:text="${nextSchedule.bodyCode}"></p>
-    </div>
-    <div class="sessionCount">
-      <h3>回数</h3>
-      <p th:text="${hairRemovalLog.sessionCount}"></p>
-    </div>
+  <div class="nextScheduleTitle">
+  <h3>日付</h3>
+  <h3>部位</h3>
+  <h3>回数</h3>
   </div>
+
+  <div class="nextSchedule" th:each="schedule, stat : ${nextSchedules}">
+    <p class="date" th:text="${schedule.nextDate}"></p>
+    <p class="bodyPart" th:text="${schedule.bodyCode}"></p>
+    <p class="sessionCount" th:text="${hairRemovalLogs[__${stat.index}__].sessionCount}"></p>
+  </div>
+
 </main>
 
 </body>
