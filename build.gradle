@@ -3,15 +3,25 @@ plugins {
 	id 'org.springframework.boot' version '3.3.5'
 	id 'io.spring.dependency-management' version '1.1.6'
 	id 'org.seasar.doma.compile' version '1.1.0'
+	id 'com.diffplug.eclipse.apt' version '3.23.0'
 }
 
-group = 'com.example.hairremoval'
-version = '0.0.1-SNAPSHOT'
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+}
 
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+group = 'com.app'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+//processResources.destinationDir = compileJava.destinationDir
+//compileJava.dependsOn processResources
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
 	}
+	domaGenRuntime
 }
 
 repositories {
@@ -19,34 +29,19 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	compileOnly 'org.projectlombok:lombok:1.18.34'
-	annotationProcessor 'org.projectlombok:lombok:1.18.34'
-	implementation 'org.seasar.doma:doma-core:2.53.0'
-	annotationProcessor 'org.seasar.doma:doma-processor:2.53.0'
-}
+	implementation group: 'org.json', name: 'json', version: '20090211'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+	implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.6.0'
+	annotationProcessor 'org.seasar.doma:doma-processor:2.50.0'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
 
-tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
-	}
+	domaGenRuntime 'org.seasar.doma:doma-gen:2.11.0'
 
 
-
-sourceSets {
-	main {
-		resources {
-			srcDirs = ['src/main/resources']
-		}
-	}
 }

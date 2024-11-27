@@ -1,6 +1,6 @@
 package com.example.hairremoval;
 
-import com.example.hairremoval.logging.RestApiLoggingFilter;
+
 import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,16 +22,16 @@ public class HairRemovalAppApplication {
 	 * LogFilterの設定
 	 * @return
 	 */
-	@Bean
-	public FilterRegistrationBean logFilter(){
-		//フィルタのオブジェクトを1番目に実行するフィルタとして追加
-		FilterRegistrationBean bean = new FilterRegistrationBean(new RestApiLoggingFilter());
-		//コントローラ・静的コンテンツ全てのリクエストに対してフィルタを有効化
-		bean.addUrlPatterns("/api/*");
-		//フィルタの実行順序を1に設定
-		bean.setOrder(1);
-		return bean;
-	}
+//	@Bean
+//	public FilterRegistrationBean logFilter(){
+//		//フィルタのオブジェクトを1番目に実行するフィルタとして追加
+//		FilterRegistrationBean bean = new FilterRegistrationBean(new RestApiLoggingFilter());
+//		//コントローラ・静的コンテンツ全てのリクエストに対してフィルタを有効化
+//		bean.addUrlPatterns("/api/*");
+//		//フィルタの実行順序を1に設定
+//		bean.setOrder(1);
+//		return bean;
+//	}
 
 	/**
 	 * データソース Application.ymlに接続文字列を記載

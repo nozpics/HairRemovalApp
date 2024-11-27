@@ -1,7 +1,7 @@
 package com.example.hairremoval.dao;
 
 import com.example.hairremoval.config.DomaInjectConfig;
-import com.example.hairremoval.entity.Log;
+import com.example.hairremoval.entity.HairRemovalLog;
 import java.util.List;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
@@ -9,22 +9,22 @@ import org.seasar.doma.Select;
 
 @Dao
 @DomaInjectConfig
-public interface LogDao {
+public interface HairRemovalLogDao {
 
   //データベースから全ての履歴情報を取得する
   @Select
-  List<Log> selectAll();
+  List<HairRemovalLog> selectAll();
 
   //特定のユーザーIDに関する全ての履歴を取得
   @Select
-  List<Log> selectByUserId(int userId);
+  List<HairRemovalLog> selectByUserId(int userId);
 
   //主キーに基づいて特定の履歴を取得
   @Select
-  Log selectById(int userId, String bodyCode, int sessionCount);
+  HairRemovalLog selectById(int userId, String bodyCode, int sessionCount);
 
   //新しい履歴をデータベースに挿入
   @Insert(sqlFile = true)
-  int insert(Log log);
+  int insert(HairRemovalLog hairRemovalLog);
 
 }

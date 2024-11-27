@@ -1,2 +1,2 @@
 -- データベースから全ての履歴情報を取得する
-SELECT * FROM log;
+SELECT * FROM hairremoval_log;

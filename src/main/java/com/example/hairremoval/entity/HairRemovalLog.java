@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import lombok.Data;
 
 @Entity
-@Table(name = "log")
+@Table(name = "hairremoval_log")
 @Data
-public class Log {
+public class HairRemovalLog {
 
     @Id
     @Column(name = "user_id")

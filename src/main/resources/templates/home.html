@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="/static/home/home.css" >
+
 <head>
   <meta charset="UTF-8">
   <title>脱毛管理画面</title>
+  <link rel="stylesheet" href="/static/home/home.css">
 </head>
 <body>
 <header>
   <h1>脱毛管理シート</h1>
   <div class="userInfo">
-    <span>ようこそ！<span th:text="${User.userName}"></span>さん！</span>
+    <span>ようこそ！<span th:text="${user.userName}"></span>さん！</span>
     <div class="accountLink">
       <a href="">アカウントを変更する</a>
     </div>
@@ -30,16 +31,16 @@
   <div class ="nextSchedule">
     <div class="date">
      <h3>日付</h3>
-     <p th:text="${NextSchedule.nextDate"></p>
+     <p th:text="${nextSchedule.nextDate}"></p>
      </div>
 
     <div class="bodyPart">
       <h3>部位</h3>
-
+      <p th:text="${nextSchedule.bodyCode}"></p>
     </div>
     <div class="sessionCount">
       <h3>回数</h3>
-
+      <p th:text="${hairRemovalLog.sessionCount}"></p>
     </div>
   </div>
 </main>
