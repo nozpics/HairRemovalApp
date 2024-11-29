@@ -1,4 +1,4 @@
-package com.example.hairremoval.web;
+package com.example.hairremoval.controller;
 
 import com.example.hairremoval.entity.HairRemovalLog;
 import com.example.hairremoval.entity.NextSchedule;

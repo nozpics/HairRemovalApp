@@ -1,0 +1,13 @@
+CREATE DATABASE hairremoval_app;
+
+USE hairremoval_app;
+
+CREATE TABLE users(user_id int PRIMARY KEY, user_name VARCHAR(50) NOT NULL, password_hash VARCHAR(255) NOT NULL);
+
+CREATE TABLE user_id_sequence(user_id int PRIMARY KEY AUTO_INCREMENT);
+
+CREATE TABLE body_part(body_code VARCHAR(50) PRIMARY KEY, name VARCHAR(50) NOT NULL);
+
+CREATE TABLE hairremoval_log(user_id int,date DATE NOT NULL, body_code VARCHAR(50), session_count int, PRIMARY KEY(user_id,body_code,session_count), FOREIGN KEY(user_id) REFERENCES users(user_id),FOREIGN KEY(body_code) REFERENCES body_part(body_code));
+
+CREATE TABLE next_schedule(user_id int, body_code VARCHAR(50),next_date DATE,FOREIGN KEY(user_id) REFERENCES users(user_id),FOREIGN KEY(body_code) REFERENCES body_part(body_code));
