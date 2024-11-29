@@ -30,13 +30,13 @@
   <div class="nextScheduleTitle">
   <h3>日付</h3>
   <h3>部位</h3>
-  <h3>回数</h3>
+  <h3>何回目</h3>
   </div>
 
   <div class="nextSchedule" th:each="schedule, stat : ${nextSchedules}">
     <p class="date" th:text="${schedule.nextDate}"></p>
     <p class="bodyPart" th:text="${schedule.bodyCode}"></p>
-    <p class="sessionCount" th:text="${hairRemovalLogs[__${stat.index}__].sessionCount}"></p>
+    <p class="sessionCount" th:text="${hairRemovalLogs[__${stat.index}__].sessionCount+1}"></p>
   </div>
 
 </main>

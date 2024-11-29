@@ -36,23 +36,15 @@ public class HomeController {
 
   @GetMapping("/home")
   public String get(Model model){
-//    User user = new User();
-//    user.setUserName(user.getUserName());
-//    log.info("aaaa");
-//    log.info(user.getUserName());
-//    model.addAttribute("user",user);
     List<User> users = userService.getAllUsers();
       User user = users.get(0);
       model.addAttribute("user",user);
 
-    List<NextSchedule> nextSchedules = nextScheduleService.getAllNextSchedule();
-//      NextSchedule nextSchedule = nextSchedules.get(0);
+    List<NextSchedule> nextSchedules = nextScheduleService.getAllNextScheduleSortedByDate();
       model.addAttribute("nextSchedules",nextSchedules);
-//      model.addAttribute("bodyCode",nextSchedule.getBodyCode());
 
 
     List<HairRemovalLog> hairRemovalLogs = hairRemovalLogService.getAllHairRemovalLog();
-//      HairRemovalLog hairRemovalLog = hairRemovalLogs.get(0);
       model.addAttribute("hairRemovalLogs",hairRemovalLogs);
 
     return "home";

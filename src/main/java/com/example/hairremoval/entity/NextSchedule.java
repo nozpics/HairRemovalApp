@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity
 @Table(name = "next_schedule")
 @Data
-public class NextSchedule {
+public class NextSchedule implements Comparable<NextSchedule>{
 
   @Column(name = "user_id")
   private int userId;  //ユーザーID　Userのuser_idと外部キーで紐づけ
@@ -20,4 +20,9 @@ public class NextSchedule {
 
   @Column(name = "next_date")
   private LocalDate nextDate;
+
+  @Override
+  public int compareTo(NextSchedule other){
+    return this.nextDate.compareTo(other.nextDate);
+  }
 }
