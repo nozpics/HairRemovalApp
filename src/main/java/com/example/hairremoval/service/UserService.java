@@ -13,7 +13,11 @@ public class UserService {
   @Autowired
   private UserDao userDao;
 
-  public List<User> getAllUsers() {
+  public List<User> getAllUsers(){
     return userDao.selectAll();
+  }
+
+  public User getUserById(int userId) {
+    return userDao.selectByID(userId);
   }
 }
