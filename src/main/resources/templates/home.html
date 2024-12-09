@@ -32,9 +32,9 @@
   <h3>部位</h3>
   <h3>何回目</h3>
   </div>
-  <div class="nextSchedule" th:each="next : ${combinedLogs}">
+  <div class="nextSchedule" th:each="next : ${nextSchedule}">
     <p class="date" th:text="${next.nextDate}"></p>
-    <p class="bodyPart" th:text="${next.bodyCode}"></p>
+    <p class="bodyPart" th:text="${next.name}"></p>
     <p class="sessionCount" th:text="${next.sessionCount}"></p>
   </div>
 

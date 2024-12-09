@@ -13,9 +13,13 @@ public class NextScheduleService {
     @Autowired
     private NextScheduleDao nextScheduleDao;
 
-    public List<NextSchedule> getNextScheduleSortedByDate(int userId){
-      List<NextSchedule> schedules = nextScheduleDao.selectByUserId(userId);
-      schedules.sort(Comparator.comparing(NextSchedule::getNextDate));
-      return schedules;
+    public List<NextSchedule> selectByUserId(int userId){
+      return nextScheduleDao.selectByUserId(userId);
     }
+
+//    public List<NextSchedule> getNextScheduleSortedByDate(int userId){
+//      List<NextSchedule> schedules = nextScheduleDao.selectByUserId(userId);
+//      schedules.sort(Comparator.comparing(NextSchedule::getNextDate));
+//      return schedules;
+//    }
   }
