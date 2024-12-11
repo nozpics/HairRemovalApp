@@ -13,13 +13,22 @@ import lombok.Data;
 public class NextSchedule implements Comparable<NextSchedule>{
 
   @Column(name = "user_id")
-  private int userId;  //ユーザーID　Userのuser_idと外部キーで紐づけ
+  private int userId;
 
   @Column(name = "body_code")
-  private String bodyCode; //脱毛部位コード　BodyPartのbody_codeと外部キーで紐づけ済み
+  private String bodyCode;
 
-  @Column(name = "next_date")
+  @Column(name = "nextDate")
   private LocalDate nextDate;
+
+  @Column(name = "max_next_date")
+  private LocalDate maxNextDate;
+
+  @Column(name = "name")
+  private String name;
+
+  @Column(name = "sessionCount")
+  private int sessionCount;
 
   @Override
   public int compareTo(NextSchedule other){

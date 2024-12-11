@@ -14,14 +14,17 @@ public class HairRemovalLog {
 
     @Id
     @Column(name = "user_id")
-    private int userId;  //ユーザーID　Userのuser_idと外部キーで紐づけ
+    private int userId;
 
     @Column(name = "date")
     private LocalDate date;
 
     @Id
     @Column(name = "body_code")
-    private String bodyCode;  //脱毛部位コード　BodyPartのbody_codeと外部キーで紐づけ済み
+    private String bodyCode;
+
+    @Column(name = "name")
+    private String name;
 
     @Id
     @Column(name = "session_count")

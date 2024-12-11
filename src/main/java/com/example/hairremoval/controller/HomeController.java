@@ -1,10 +1,6 @@
 package com.example.hairremoval.controller;
 
-//import com.example.hairremoval.dto.CombinedScheduleLog;
-import com.example.hairremoval.entity.HairRemovalLog;
 import com.example.hairremoval.entity.NextSchedule;
-//import com.example.hairremoval.service.CombinedScheduleLogService;
-import com.example.hairremoval.service.HairRemovalLogService;
 import com.example.hairremoval.service.NextScheduleService;
 import com.example.hairremoval.service.UserService;
 import java.util.List;
@@ -34,9 +30,6 @@ public class HomeController {
   @Autowired
   private  NextScheduleService nextScheduleService;
 
-//  @Autowired
-//  private CombinedScheduleLogService combinedScheduleLogService;
-
   @GetMapping("/home")
   public String get(@RequestParam int userId, Model model){
 
@@ -45,9 +38,6 @@ public class HomeController {
 
       List<NextSchedule> nextSchedule = nextScheduleService.selectByUserId(userId);
       model.addAttribute("nextSchedule",nextSchedule);
-
-      //List<CombinedScheduleLog> combinedLogs = combinedScheduleLogService.getCombinedScheduleLogsSortedByDate(userId);
-      //model.addAttribute("combinedLogs",combinedLogs);
 
     return "home";
   }

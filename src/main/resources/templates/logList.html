@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>脱毛履歴管理画面</title>
+  <link rel="stylesheet" th:href="@{/logList/logList.css}">
+</head>
+<body>
+<header>
+<h1>脱毛管理アプリ</h1>
+</header>
+<main>
+  <h1>脱毛履歴</h1>
+  <div class="homeLink">
+    <a href="home?userId=1">脱毛管理シートへ</a>
+  </div>
+
+  <div class="logListTitle">
+    <h3>日付</h3>
+    <h3>部位</h3>
+    <h3>回数</h3>
+  </div>
+  <div class="logList" th:each="log : ${hairRemovalLog}">
+    <p class="date" th:text="${log.date}"></p>
+    <p class="bodyPart" th:text="${log.name}"></p>
+    <p class="sessionCount" th:text="${log.sessionCount}"></p>
+  </div>
+  <div class="homeLink">
+    <a href="home?userId=1">脱毛管理シートへ</a>
+  </div>
+</main>
+</body>
+</html>

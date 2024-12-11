@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-  <h1>脱毛管理シート</h1>
+  <h1>脱毛管理アプリ</h1>
   <div class="userInfo">
     <span>ようこそ！<span th:text="${user.userName}"></span>さん！</span>
     <div class="accountLink">
@@ -17,12 +17,15 @@
   </div>
 </header>
 <main>
+  <div class = "mainTitle">
+    <h1>脱毛管理シート</h1>
+  </div>
   <div class = "dataLink">
     <div class="logLink">
      <a href="">記録する</a>
     </div>
     <div class="historyLink">
-      <a href="">履歴を見る</a>
+      <a href="logList?userId=1">履歴を見る</a>
     </div>
   </div>
 

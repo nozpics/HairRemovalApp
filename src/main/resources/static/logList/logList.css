@@ -8,33 +8,16 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+
 .header h1{
     margin: 0;
 }
 
-.userInfo {
-     text-align: right;
-}
-
-.accountLink {
-    margin-top: 20px;
-}
-
-.accountLink a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.accountLink a:hover {
-    text-decoration: underline;
-}
-
 main {
-    padding: 20px;
+    padding:20px
 }
 
-
-.dataLink {
+.homeLink {
     display: flex;
     justify-content: flex-start;
     gap: 20px;
@@ -42,7 +25,7 @@ main {
     margin-bottom: 40px;
 }
 
-.dataLink a {
+.homeLink a {
     color: #007bff;
     text-decoration: none;
     padding: 10px 20px;
@@ -50,23 +33,22 @@ main {
     border-radius: 5px;
 }
 
-.dataLink a:hover {
+.homeLink a:hover {
     background-color: #007bff;
     color: #ffffff;
 }
-
-.nextScheduleTitle, .nextSchedule {
+.logListTitle, .logList {
     display: flex;
     justify-content: flex-start;
     gap: 80px;
 }
 
-.nextScheduleTitle h3, .nextSchedule p {
+.logListTitle h3, .logList p {
     width: 100px;
     text-align: center;
     margin: 0;
 }
 
-.nextSchedule {
+.logList {
     margin-top: 30px;
 }
