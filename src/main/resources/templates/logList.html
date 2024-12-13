@@ -13,21 +13,27 @@
 <main>
   <h1>脱毛履歴</h1>
   <div class="homeLink">
-    <a href="home?userId=1">脱毛管理シートへ</a>
+    <a href="home">脱毛管理シートへ</a>
   </div>
 
   <div class="logListTitle">
-    <h3>日付</h3>
-    <h3>部位</h3>
-    <h3>回数</h3>
-  </div>
-  <div class="logList" th:each="log : ${hairRemovalLog}">
-    <p class="date" th:text="${log.date}"></p>
-    <p class="bodyPart" th:text="${log.name}"></p>
-    <p class="sessionCount" th:text="${log.sessionCount}"></p>
+    <table border="1" width="400">
+      <tr>
+        <th>日付</th>
+        <th>部位</th>
+        <th>回数</th>
+      </tr>
+      <div class="logList" th:each="log : ${hairRemovalLog}">
+        <tr align="center">
+          <td class="date" th:text="${log.date}"></td>
+          <td class="bodyPart" th:text="${log.name}"></td>
+          <td class="sessionCount" th:text="${log.sessionCount}"></td>
+        </tr>
+      </div>
+    </table>
   </div>
   <div class="homeLink">
-    <a href="home?userId=1">脱毛管理シートへ</a>
+    <a href="home">脱毛管理シートへ</a>
   </div>
 </main>
 </body>

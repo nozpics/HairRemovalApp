@@ -25,22 +25,27 @@
      <a href="">記録する</a>
     </div>
     <div class="historyLink">
-      <a href="logList?userId=1">履歴を見る</a>
+      <a href="logList">履歴を見る</a>
     </div>
   </div>
 
   <h2>次回の脱毛予定</h2>
   <div class="nextScheduleTitle">
-  <h3>日付</h3>
-  <h3>部位</h3>
-  <h3>何回目</h3>
+    <table border="1" width="400">
+      <tr>
+        <th>日付</th>
+        <th>部位</th>
+        <th>何回目</th>
+      </tr>
+      <div class="nextSchedule" th:each="next : ${nextSchedule}">
+           <tr align="center">
+             <td class="date" th:text="${next.nextDate}"></td>
+             <td class="bodyPart" th:text="${next.name}"></td>
+             <td class="sessionCount" th:text="${next.sessionCount}"></td>
+           </tr>
+      </div>
+    </table>
   </div>
-  <div class="nextSchedule" th:each="next : ${nextSchedule}">
-    <p class="date" th:text="${next.nextDate}"></p>
-    <p class="bodyPart" th:text="${next.name}"></p>
-    <p class="sessionCount" th:text="${next.sessionCount}"></p>
-  </div>
-
 </main>
 
 </body>

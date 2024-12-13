@@ -37,18 +37,3 @@ main {
     background-color: #007bff;
     color: #ffffff;
 }
-.logListTitle, .logList {
-    display: flex;
-    justify-content: flex-start;
-    gap: 80px;
-}
-
-.logListTitle h3, .logList p {
-    width: 100px;
-    text-align: center;
-    margin: 0;
-}
-
-.logList {
-    margin-top: 30px;
-}

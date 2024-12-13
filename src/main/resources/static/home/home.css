@@ -55,18 +55,3 @@ main {
     color: #ffffff;
 }
 
-.nextScheduleTitle, .nextSchedule {
-    display: flex;
-    justify-content: flex-start;
-    gap: 80px;
-}
-
-.nextScheduleTitle h3, .nextSchedule p {
-    width: 100px;
-    text-align: center;
-    margin: 0;
-}
-
-.nextSchedule {
-    margin-top: 30px;
-}

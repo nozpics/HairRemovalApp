@@ -2,6 +2,7 @@ package com.example.hairremoval.dao;
 
 import com.example.hairremoval.config.DomaInjectConfig;
 import com.example.hairremoval.entity.HairRemovalLog;
+import java.time.LocalDate;
 import java.util.List;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
@@ -24,7 +25,8 @@ public interface HairRemovalLogDao {
   HairRemovalLog selectById(int userId, String bodyCode, int sessionCount);
 
   //新しい履歴をデータベースに挿入
-  @Insert(sqlFile = true)
-  int insert(HairRemovalLog hairRemovalLog);
+//  @Insert(sqlFile = true)
+//  List<HairRemovalLog> insertLog(LocalDate date, String name,LocalDate nextDate);
+//  int insert(HairRemovalLog hairRemovalLog);
 
 }
