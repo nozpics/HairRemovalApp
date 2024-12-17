@@ -67,7 +67,6 @@ public class webController {
    */
   @GetMapping("/logInput")
   public String getLogInput(Model model){
-    int userId=1;
     List<BodyPart> bodyPart = bodyPartService.getBodyPartName();
     model.addAttribute("bodyPart",bodyPart);
     return "logInput";
@@ -92,22 +91,16 @@ public class webController {
   /**
    * registrationCompleteController
    */
-  @GetMapping("/registrationComplete")
-  public String getRegistrationComplete(Model model){
-    int userId=1;
-    return "registrationComplete";
-  }
+//  @GetMapping("/registrationComplete")
+//  public String getRegistrationComplete(Model model){
+//    int userId=1;
+//    return "registrationComplete";
+//  }
   @PostMapping("/registrationComplete")
   public String saveRegistration(@RequestParam LocalDate date,@RequestParam String name,@RequestParam LocalDate nextDate,Model model){
-    hairRemovalLogService.registerInsertLog(date, name, nextDate);
+    int userId=1;
+    hairRemovalLogService.registerInsertLog(userId,date, name, nextDate);
+    nextScheduleService.registerInsertSchedule(userId,name,nextDate);
     return "registrationComplete";
   }
-//
-//  @PostMapping("/logConfirm")
-//  public String insertLog(@RequestParam LocalDate date, @RequestParam String name, @RequestParam LocalDate nextDate, Model model){
-//
-//    hairRemovalLogService.registerInsertLog(date, name, nextDate);
-//    return "logConfirm";
-//
-//  }
 }

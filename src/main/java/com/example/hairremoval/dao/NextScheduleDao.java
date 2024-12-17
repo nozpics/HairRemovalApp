@@ -31,7 +31,7 @@ public interface NextScheduleDao {
 
   //新しい次回予定日をデータベースに挿入
   @Insert(sqlFile = true)
-  int insert(NextSchedule nextSchedule);
+  int insertSchedule(int userId,String name,LocalDate nextDate);
 
   //既存の次回予定日を更新
   @Update(sqlFile = true)

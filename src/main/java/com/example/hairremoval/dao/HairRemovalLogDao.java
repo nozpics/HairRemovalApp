@@ -26,7 +26,6 @@ public interface HairRemovalLogDao {
 
   //新しい履歴をデータベースに挿入
   @Insert(sqlFile = true)
-  List<HairRemovalLog> insertLog(LocalDate date, String name,LocalDate nextDate);
-  int insert(HairRemovalLog hairRemovalLog);
+  int insertLog(int userId,LocalDate date, String name,LocalDate nextDate);
 
 }

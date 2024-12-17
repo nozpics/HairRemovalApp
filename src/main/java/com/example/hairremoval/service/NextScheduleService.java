@@ -2,6 +2,7 @@ package com.example.hairremoval.service;
 
 import com.example.hairremoval.dao.NextScheduleDao;
 import com.example.hairremoval.entity.NextSchedule;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class NextScheduleService {
     public List<NextSchedule> selectByUserId(int userId){
       return nextScheduleDao.selectByUserId(userId);
     }
+  public void registerInsertSchedule(int userId,String name,LocalDate nextDate){
+    nextScheduleDao.insertSchedule(userId,name, nextDate);
+  }
 
 //    public List<NextSchedule> getNextScheduleSortedByDate(int userId){
 //      List<NextSchedule> schedules = nextScheduleDao.selectByUserId(userId);
