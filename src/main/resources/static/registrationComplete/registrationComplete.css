@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #eeffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1{
+    margin: 0;
+}
+.homeLink {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.homeLink a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.homeLink a:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}

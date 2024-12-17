@@ -17,8 +17,7 @@ public class HairRemovalLogService {
     return hairRemovalLogDao.selectByUserId(userId);
   }
 
-//  public List<HairRemovalLog> registerInsertLog(LocalDate date,String name,LocalDate nextDate){
-//    return hairRemovalLogDao.insertLog(date,name,nextDate);
+  public List<HairRemovalLog> registerInsertLog(LocalDate date,String name,LocalDate nextDate){
+    return hairRemovalLogDao.insertLog(date,name,nextDate);
   }
-
-//}
+}

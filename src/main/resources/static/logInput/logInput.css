@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #eeffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1{
+    margin: 0;
+}
+
+main {
+    padding:20px;
+}
+.date{
+    margin-bottom:20px;
+}
+.bodyPart{
+    margin-bottom:15px;
+}
+.nextDate{
+    margin-bottom:20px;
+}
+
+.homeLink{
+    margin-top:20px
+    }

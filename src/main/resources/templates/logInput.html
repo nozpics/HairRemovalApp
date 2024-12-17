@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>脱毛日入力画面</title>
-  <link rel="stylesheet" th:href="@{//.css}">
+  <link rel="stylesheet" th:href="@{/logInput/logInput.css}">
 </head>
 <body>
 <header>
@@ -12,16 +12,25 @@
 </header>
 <main>
   <h1>脱毛日入力シート</h1>
-  <form action="/register" method="POST">
+  <form th:action="@{/logRegister}" method="POST">
+    <div class="date">
     <label for="date">日付:</label>
     <input type="date" id="date" name="date" required>
-
-    <label for="bodyPart">部位:</label>
-    <input type="text" id="bodyPart" name="bodyPart" required>
-
+    </div>
+    <div class="bodyPart">
+    <label>部位:</label>
+      <select class="bodyPart" name="bodyPart">
+        <div th:each="bodyName : ${bodyPart}" >
+          <option th:value="${bodyName.name}">
+            [[${bodyName.name}]]
+          </option>
+        </div>
+      </select>
+    </div>
+      <div class="nextDate">
     <label for="nextDate">次回脱毛日:</label>
     <input type="date" id="nextDate" name="nextDate" required>
-
+      </div>
     <button type="submit">登録</button>
   </form>
 

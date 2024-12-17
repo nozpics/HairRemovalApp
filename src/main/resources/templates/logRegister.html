@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>脱毛日登録画面</title>
+  <link rel="stylesheet" th:href="@{/logRegister/logRegister.css}">
+</head>
+<body>
+<header>
+  <h1>脱毛管理アプリ</h1>
+</header>
+<main>
+  <h2>以下の内容で登録してよろしいですか？</h2>
+  <form th:action="@{/registrationComplete}" method="POST">
+  <div class = registerInfo>
+    <p>
+      日付：<span th:text="${date}"></span>
+    </p>
+    <p>
+      部位：<span th:text="${bodyPart}"></span>
+    </p>
+    <p>
+      次回脱毛日：<span th:text="${nextDate}"></span>
+    </p>
+  </div>
+
+    <button type="submit">登録完了</button>
+  </form>
+  <div class="logInputLink">
+    <a href="logInput">戻る</a>
+  </div>
+
+</main>
+
+</body>
+</html>
