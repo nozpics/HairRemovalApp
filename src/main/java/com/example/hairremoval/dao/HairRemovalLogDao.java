@@ -1,6 +1,7 @@
 package com.example.hairremoval.dao;
 
 import com.example.hairremoval.config.DomaInjectConfig;
+import com.example.hairremoval.entity.BodyPart;
 import com.example.hairremoval.entity.HairRemovalLog;
 import java.time.LocalDate;
 import java.util.List;
@@ -24,8 +25,12 @@ public interface HairRemovalLogDao {
   @Select
   HairRemovalLog selectById(int userId, String bodyCode, int sessionCount);
 
+  //部位コードにもとづく回数を取得
+  @Select
+  int selectSession(int userId,String bodyCode);
+
   //新しい履歴をデータベースに挿入
   @Insert(sqlFile = true)
-  int insertLog(int userId,LocalDate date, String name,LocalDate nextDate);
+  int insertLog(int userId,LocalDate date, String bodyCode,int sessionCount);
 
 }

@@ -1,6 +1,7 @@
 package com.example.hairremoval.dao;
 
 import com.example.hairremoval.config.DomaInjectConfig;
+import com.example.hairremoval.entity.BodyPart;
 import com.example.hairremoval.entity.NextSchedule;
 import java.time.LocalDate;
 import java.util.List;
@@ -31,7 +32,8 @@ public interface NextScheduleDao {
 
   //新しい次回予定日をデータベースに挿入
   @Insert(sqlFile = true)
-  int insertSchedule(int userId,String name,LocalDate nextDate);
+  int insertSchedule(int userId, String bodyCode,LocalDate nextDate);
+
 
   //既存の次回予定日を更新
   @Update(sqlFile = true)

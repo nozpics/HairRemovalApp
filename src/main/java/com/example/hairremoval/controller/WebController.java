@@ -6,6 +6,7 @@ import com.example.hairremoval.entity.NextSchedule;
 import com.example.hairremoval.entity.User;
 import com.example.hairremoval.service.BodyPartService;
 import com.example.hairremoval.service.HairRemovalLogService;
+import com.example.hairremoval.service.LogRegisterService;
 import com.example.hairremoval.service.NextScheduleService;
 import com.example.hairremoval.service.UserService;
 import java.time.LocalDate;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
-public class webController {
+public class WebController {
 
   @Autowired
   private UserService userService;
@@ -33,6 +34,9 @@ public class webController {
 
   @Autowired
   private BodyPartService bodyPartService;
+
+  @Autowired
+  private LogRegisterService logRegisterService;
 
   /**
    * homeController
@@ -75,32 +79,23 @@ public class webController {
   /**
    * logRegisterController
    */
-//  @GetMapping("/logRegister")
-//  public String getLogRegister(Model model){
-//    int userId=1;
-//    return "logRegister";
-//  }
   @PostMapping("/logRegister")
   public String registerText(@RequestParam LocalDate date,@RequestParam String bodyPart,@RequestParam LocalDate nextDate,Model model){
+    int userId=1;
+    int sessionCount =hairRemovalLogService.getSessionCount(userId, bodyPart); //脱毛回数の取得
     model.addAttribute("date",date);
     model.addAttribute("bodyPart",bodyPart);
     model.addAttribute("nextDate",nextDate);
+    model.addAttribute("sessionCount",sessionCount);
     return "logRegister";
   }
 
   /**
    * registrationCompleteController
    */
-//  @GetMapping("/registrationComplete")
-//  public String getRegistrationComplete(Model model){
-//    int userId=1;
-//    return "registrationComplete";
-//  }
   @PostMapping("/registrationComplete")
-  public String saveRegistration(@RequestParam LocalDate date,@RequestParam String name,@RequestParam LocalDate nextDate,Model model){
-    int userId=1;
-    hairRemovalLogService.registerInsertLog(userId,date, name, nextDate);
-    nextScheduleService.registerInsertSchedule(userId,name,nextDate);
+  public String saveRegistration(@RequestParam LocalDate date,@RequestParam String bodyPart,@RequestParam LocalDate nextDate,@RequestParam int sessionCount, Model model){
+    logRegisterService.logRegister(date,bodyPart,nextDate,sessionCount);
     return "registrationComplete";
   }
 }

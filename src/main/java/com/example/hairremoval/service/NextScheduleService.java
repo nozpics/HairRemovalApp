@@ -17,9 +17,9 @@ public class NextScheduleService {
     public List<NextSchedule> selectByUserId(int userId){
       return nextScheduleDao.selectByUserId(userId);
     }
-  public void registerInsertSchedule(int userId,String name,LocalDate nextDate){
-    nextScheduleDao.insertSchedule(userId,name, nextDate);
-  }
+//  public void registerInsertSchedule(int userId,String name,LocalDate nextDate){
+//    nextScheduleDao.insertSchedule(userId,name, nextDate);
+//  }
 
 //    public List<NextSchedule> getNextScheduleSortedByDate(int userId){
 //      List<NextSchedule> schedules = nextScheduleDao.selectByUserId(userId);
