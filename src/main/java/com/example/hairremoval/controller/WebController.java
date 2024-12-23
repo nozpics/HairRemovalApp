@@ -95,7 +95,7 @@ public class WebController {
    */
   @PostMapping("/registrationComplete")
   public String saveRegistration(@RequestParam LocalDate date,@RequestParam String bodyPart,@RequestParam LocalDate nextDate,@RequestParam int sessionCount, Model model){
-    logRegisterService.logRegister(date,bodyPart,nextDate,sessionCount);
+    logRegisterService.logRegister(date,bodyPart,nextDate,sessionCount); //DB登録処理
     return "registrationComplete";
   }
 }

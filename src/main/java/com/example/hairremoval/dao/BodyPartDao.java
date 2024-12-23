@@ -18,7 +18,7 @@ public interface BodyPartDao {
 
   //指定された部位でボディコードを取得
   @Select
-  String selectByCode(String name);
+  String selectByCode(String bodyPart);
 
   //新しい脱毛部位をデータベースに挿入する
   //挿入された行数と挿入後のエンティティの状態を取得できる

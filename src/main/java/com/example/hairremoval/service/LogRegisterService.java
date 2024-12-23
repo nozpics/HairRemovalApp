@@ -23,8 +23,12 @@ public class LogRegisterService {
     HairRemovalLog hairRemovalLog = new HairRemovalLog();
     NextSchedule nextSchedule = new NextSchedule();
     int userId = 1;
+
+    //部位コードを設定
     hairRemovalLog.setBodyCode(bodyPartDao.selectByCode(bodyPart));
     nextSchedule.setBodyCode(bodyPartDao.selectByCode(bodyPart));
+
+    //DBに登録
     hairRemovalLogDao.insertLog(userId,date,hairRemovalLog.getBodyCode(),sessionCount);
     nextScheduleDao.insertSchedule(userId,nextSchedule.getBodyCode(),nextDate);
   }
