@@ -16,15 +16,19 @@
   <div class = registerInfo>
     <p>
       日付：<span th:text="${date}"></span>
+      <input type="hidden" id="date" name="date" th:value="${date}">
     </p>
     <p>
       部位：<span th:text="${bodyPart}"></span>
+      <input type="hidden" id="bodyPart" name="bodyPart" th:value="${bodyPart}">
     </p>
     <p>
       次回脱毛日：<span th:text="${nextDate}"></span>
+      <input type="hidden" id="nextDate" name="nextDate" th:value="${nextDate}">
     </p>
     <p>
       回数：<span th:text="${sessionCount}"></span>
+      <input type="hidden" id="sessionCount" name="sessionCount" th:value="${sessionCount}">
     </p>
   </div>
     <button type="submit">登録完了</button>
