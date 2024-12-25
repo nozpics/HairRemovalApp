@@ -38,6 +38,7 @@ public class WebController {
   @Autowired
   private LogRegisterService logRegisterService;
 
+
   /**
    * homeController
    *
@@ -97,5 +98,35 @@ public class WebController {
   public String saveRegistration(@RequestParam LocalDate date,@RequestParam String bodyPart,@RequestParam LocalDate nextDate,@RequestParam int sessionCount, Model model){
     logRegisterService.logRegister(date,bodyPart,nextDate,sessionCount); //DB登録処理
     return "registrationComplete";
+  }
+
+  @GetMapping("/login")
+  public String getLogin(Model model){
+    return "login";
+  }
+
+  @GetMapping("/accountInput")
+  public String getAccountInput(Model model){
+    return "accountInput";
+  }
+
+  /**
+   * accountRegisterController
+   */
+  @PostMapping("/accountRegister")
+  public String accountText(@RequestParam String userName,@RequestParam String passwordHash,Model model){
+    int userId=userService.setUserById();//登録するユーザーID
+    model.addAttribute("userId",userId);
+    model.addAttribute("userName",userName);
+    model.addAttribute("passwordHash",passwordHash);
+    return "accountRegister";
+  }
+  /**
+   * accountRegistrationCompleteController
+   */
+  @PostMapping("/accountRegistrationComplete")
+  public String saveAccountRegistration(@RequestParam int userId,@RequestParam String userName,@RequestParam String passwordHash,Model model){
+    userService.accountRegister(userId,userName,passwordHash);//DB登録処理
+    return "accountRegistrationComplete";
   }
 }

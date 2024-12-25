@@ -20,4 +20,13 @@ public class UserService {
   public User getUserById(int userId) {
     return userDao.selectByID(userId);
   }
+
+  //ユーザーIDを登録するために現在の最大値を取得し、その次の番号を返す。
+  public int setUserById(){
+    return userDao.selectByMaxID()+1;
+  }
+
+  public void accountRegister(int userId,String userName,String passwordHash){
+    userDao.insertUser(userId,userName,passwordHash);
+  }
 }

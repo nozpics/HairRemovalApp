@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * 履歴を登録するためのサービスクラス
+ */
 @Service
 public class LogRegisterService {
 
@@ -25,11 +28,10 @@ public class LogRegisterService {
     int userId = 1;
 
     //部位コードを設定
-    hairRemovalLog.setBodyCode(bodyPartDao.selectByCode(bodyPart));
-    nextSchedule.setBodyCode(bodyPartDao.selectByCode(bodyPart));
+    String bodyCode = bodyPartDao.selectByCode(bodyPart);
 
     //DBに登録
-    hairRemovalLogDao.insertLog(userId,date,hairRemovalLog.getBodyCode(),sessionCount);
-    nextScheduleDao.insertSchedule(userId,nextSchedule.getBodyCode(),nextDate);
+    hairRemovalLogDao.insertLog(userId,date,bodyCode,sessionCount);
+    nextScheduleDao.insertSchedule(userId,bodyCode,nextDate);
   }
 }

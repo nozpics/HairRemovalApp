@@ -8,13 +8,12 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
-.header h1{
-    margin: 0;
-}
 main {
     padding:20px;
 }
-.logInputLink{
-    margin-top:20px;
-    }
+.header h1{
+    margin: 0;
+}
+.loginLink{
+ margin-top:20px;
+}

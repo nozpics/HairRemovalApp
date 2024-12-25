@@ -12,9 +12,18 @@ header {
 .header h1{
     margin: 0;
 }
+
 main {
     padding:20px;
 }
-.logInputLink{
+
+.userName{
+    margin-bottom:20px;
+}
+.passwordHash{
+    margin-bottom:20px;
+}
+
+.logLink{
     margin-top:20px;
     }

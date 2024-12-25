@@ -12,6 +12,11 @@ header {
 .header h1{
     margin: 0;
 }
+
+main {
+    padding:20px;
+}
+
 .homeLink {
     display: flex;
     justify-content: flex-start;

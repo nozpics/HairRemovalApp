@@ -20,9 +20,13 @@ public interface UserDao {
   @Select
   User selectByID(int userId);
 
+  //ユーザーIDを登録するために現在の最大値を取得する
+  @Select
+  int selectByMaxID();
+
   //新しいユーザー情報を挿入するため データベースの行数を表すため戻り値はint
   @Insert(sqlFile = true)
-  int insert(User user);
+  int insertUser(int userId,String userName,String passwordHash);
 
   //既存のユーザー情報を更新するため
   @Update(sqlFile = true)

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン画面</title>
+  <link rel="stylesheet" th:href="@{//.css}">
+</head>
+<body>
+<header>
+  <h1>脱毛管理アプリ</h1>
+</header>
+<main>
+  <h1>ログイン</h1>
+  <form>
+  <div class="userId">
+    <label>ユーザーID：</label>
+  </div>
+  <div class="password">
+  <label>パスワード：</label>
+  </div>
+  <button type="submit">ログイン</button>
+  </form>
+  <div class="accountInputLink">
+    <p>アカウント登録がまだの方はこちら→
+    <a href="accountInput">登録</a></p>
+  </div>
+</main>
+</body>
+</html>

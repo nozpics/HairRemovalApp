@@ -20,8 +20,4 @@ public class HairRemovalLogService {
   public int getSessionCount(int userId,String bodyCode){
     return hairRemovalLogDao.selectSession(userId,bodyCode)+1;
   }
-
-//  public void registerInsertLog(int userId,LocalDate date,String name,LocalDate nextDate){
-//    hairRemovalLogDao.insertLog(userId,date, name, nextDate);
-//  }
 }

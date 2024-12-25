@@ -1,0 +1,1 @@
+SELECT MAX(users.user_id) FROM users;

@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="/static/accountRegister/accountRegister.css" >
+
 <head>
   <meta charset="UTF-8">
-  <title>アカウント登録画面</title>
+  <title>アカウント登録確認画面</title>
+  <link rel="stylesheet" th:href="@{/accountRegister/accountRegister.css}">
 </head>
 <body>
-<div class="container">
-  <h2>アカウント登録</h2>
-  <form th:action="@{/register/confirm}" method="post">
-    <div class="form-group">
-      <label for="userId">ユーザーID：</label>
-      <input type="number" id="userId" name="userId" required>
+<header>
+  <h1>脱毛管理アプリ</h1>
+</header>
+<main>
+  <h2>以下の内容で登録してよろしいですか？</h2>
+  <form th:action="@{/accountRegistrationComplete}" method="POST">
+    <div class = registerInfo>
+      <p>
+        ユーザーID：<span th:text="${userId}"></span>
+        <input type="hidden" id="userId" name="userId" th:value="${userId}">
+      </p>
+      <p>
+        ユーザー名：<span th:text="${userName}"></span>
+        <input type="hidden" id="userName" name="userName" th:value="${userName}">
+      </p>
+      <p>
+        パスワード：<span th:text="${passwordHash}"></span>
+        <input type="hidden" id="passwordHash" name="passwordHash" th:value="${passwordHash}">
+      </p>
     </div>
-    <div class="form-group">
-      <label for="userName">ユーザー名：</label>
-      <input type="text" id="username" name="userName" required>
-    </div>
-    <div class="form-group">
-      <label for="password">パスワード：</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <div class="button-container">
-      <input type="submit" value="登録">
-    </div>
+    <button type="submit">登録完了</button>
   </form>
-  <div class="login-link">
-    <p>既にアカウントをお持ちの方は→
-      <a th:href="">ログイン</a>
-    </p>
+  <div class="accountInputLink">
+    <a href="accountInput">戻る</a>
   </div>
-</div>
+
+</main>
+
 </body>
 </html>
