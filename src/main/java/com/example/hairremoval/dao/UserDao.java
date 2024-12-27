@@ -30,6 +30,6 @@ public interface UserDao {
 
   //既存のユーザー情報を更新するため
   @Update(sqlFile = true)
-  int update(User user);
+  int updateUser(int userId,String userName,String passwordHash);
 
 }

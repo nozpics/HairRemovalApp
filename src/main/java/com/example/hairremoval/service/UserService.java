@@ -26,17 +26,19 @@ public class UserService {
     return userDao.selectByID(userId);
   }
 
-  //ユーザーIDを登録するために現在の最大値を取得し、その次の番号を返す。
-//  public int setUserById(){
-//    return userDao.selectByMaxID()+1;
-//  }
   public int setUserById(){
     UserIdSequence userIdSequence = new UserIdSequence();
     userIdSequenceDao.setById(userIdSequence);
     return userIdSequenceDao.selectById();
   }
 
-  public void accountRegister(int userId,String userName,String passwordHash){
+  public int accountRegister(String userName,String passwordHash){
+    int userId= setUserById();
     userDao.insertUser(userId,userName,passwordHash);
+    return userId;
+  }
+
+  public void saveUserUpdate(int userId,String userName,String passwordHash){
+    userDao.updateUser(userId,userName,passwordHash);
   }
 }

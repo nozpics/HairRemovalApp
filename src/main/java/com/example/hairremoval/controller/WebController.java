@@ -124,11 +124,35 @@ public class WebController {
    */
   @PostMapping("/accountRegistrationComplete")
   public String saveAccountRegistration(@RequestParam String userName,@RequestParam String passwordHash,Model model){
-    int userId=userService.setUserById();//登録するユーザーID
+    int userId = userService.accountRegister(userName,passwordHash);//DB登録処理
     model.addAttribute("userId",userId);
     model.addAttribute("userName",userName);
     model.addAttribute("passwordHash",passwordHash);
-    userService.accountRegister(userId,userName,passwordHash);//DB登録処理
     return "accountRegistrationComplete";
+  }
+
+  /**
+   * accountUpdateInputController
+   */
+  @GetMapping("/accountUpdateInput")
+public String getAccountUpdateInput(Model model){
+  return "accountUpdateInput";
+}
+
+  @PostMapping("/accountUpdateCheck")
+  public String checkAccountUpdate(@RequestParam String userName,@RequestParam String passwordHash,Model model){
+    model.addAttribute("userName",userName);
+    model.addAttribute("passwordHash",passwordHash);
+    return "accountUpdateCheck";
+  }
+
+  @PostMapping("/accountUpdateComplete")
+  public String saveAccountUpdate(@RequestParam String userName,@RequestParam String passwordHash,Model model){
+    int userId=1;
+    model.addAttribute("userId",userId);
+    model.addAttribute("userName",userName);
+    model.addAttribute("passwordHash",passwordHash);
+    userService.saveUserUpdate(userId,userName,passwordHash);
+    return "accountUpdateComplete";
   }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>アカウント変更完了画面</title>
+  <link rel="stylesheet" th:href="@{/accountUpdateComplete/accountUpdateComplete.css}">
+</head>
+<body>
+<header>
+  <h1>脱毛管理アプリ</h1>
+</header>
+<main>
+  <h3>アカウントの変更が完了しました。</h3>
+  <p>※ログインにはユーザーID、パスワードが必要なので忘れないようにしてください。</p>
+  <div class = registerInfo>
+    <p>
+      ユーザーID：<span th:text="${userId}"></span>
+    </p>
+    <p>
+      ユーザー名：<span th:text="${userName}"></span>
+    </p>
+    <p>
+      パスワード：<span th:text="${passwordHash}"></span>
+    </p>
+  </div>
+  <div class="homeLink">
+    <a href="home">脱毛管理シートへ</a>
+  </div>
+</main>
+</body>
+</html>
