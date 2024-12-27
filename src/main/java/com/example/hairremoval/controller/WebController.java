@@ -115,8 +115,6 @@ public class WebController {
    */
   @PostMapping("/accountRegister")
   public String accountText(@RequestParam String userName,@RequestParam String passwordHash,Model model){
-    int userId=userService.setUserById();//登録するユーザーID
-    model.addAttribute("userId",userId);
     model.addAttribute("userName",userName);
     model.addAttribute("passwordHash",passwordHash);
     return "accountRegister";
@@ -125,7 +123,11 @@ public class WebController {
    * accountRegistrationCompleteController
    */
   @PostMapping("/accountRegistrationComplete")
-  public String saveAccountRegistration(@RequestParam int userId,@RequestParam String userName,@RequestParam String passwordHash,Model model){
+  public String saveAccountRegistration(@RequestParam String userName,@RequestParam String passwordHash,Model model){
+    int userId=userService.setUserById();//登録するユーザーID
+    model.addAttribute("userId",userId);
+    model.addAttribute("userName",userName);
+    model.addAttribute("passwordHash",passwordHash);
     userService.accountRegister(userId,userName,passwordHash);//DB登録処理
     return "accountRegistrationComplete";
   }

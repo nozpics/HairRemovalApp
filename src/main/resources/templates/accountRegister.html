@@ -15,10 +15,6 @@
   <form th:action="@{/accountRegistrationComplete}" method="POST">
     <div class = registerInfo>
       <p>
-        ユーザーID：<span th:text="${userId}"></span>
-        <input type="hidden" id="userId" name="userId" th:value="${userId}">
-      </p>
-      <p>
         ユーザー名：<span th:text="${userName}"></span>
         <input type="hidden" id="userName" name="userName" th:value="${userName}">
       </p>

@@ -11,7 +11,20 @@
   <h1>脱毛管理アプリ</h1>
 </header>
 <main>
-  <p>アカウントの登録が完了しました。</p>
+  <h3>アカウントの登録が完了しました。</h3>
+  <p>※ログインにはユーザーID、パスワードが必要なので忘れないようにしてください。</p>
+  <div class = registerInfo>
+    <p>
+      ユーザーID：<span th:text="${userId}"></span>
+      <input type="hidden" id="userId" name="userId" th:value="${userId}">
+    </p>
+    <p>
+      ユーザー名：<span th:text="${userName}"></span>
+    </p>
+    <p>
+      パスワード：<span th:text="${passwordHash}"></span>
+    </p>
+  </div>
   <div class="loginLink">
     <a href="login">ログイン画面へ</a>
   </div>
