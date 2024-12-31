@@ -12,14 +12,19 @@
 </header>
 <main>
   <h1>ログイン</h1>
-  <form>
+  <form action="#" th:action="@{/login}" method="post">
+    <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+       th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+      ログインエラーメッセージ</p>
+
   <div class="userId">
-    <label>ユーザーID：</label>
+    <label>ユーザーID：<input type="text"  id="userId" name="userId"/></label>
   </div>
   <div class="password">
-  <label>パスワード：</label>
+  <label>パスワード：<input type="text" id="password" name="password"/></label>
   </div>
-  <button type="submit">ログイン</button>
+    <div class="login">
+      <button type="submit">ログイン</button></div>
   </form>
   <div class="accountInputLink">
     <p>アカウント登録がまだの方はこちら→

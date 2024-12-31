@@ -39,7 +39,10 @@ dependencies {
 	implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.6.0'
 	annotationProcessor 'org.seasar.doma:doma-processor:2.50.0'
 	runtimeOnly 'com.mysql:mysql-connector-j'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.2.RELEASE'
+	testImplementation 'org.springframework.security:spring-security-test'
 
 	domaGenRuntime 'org.seasar.doma:doma-gen:2.11.0'
 

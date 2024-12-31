@@ -38,6 +38,14 @@ public class WebController {
   @Autowired
   private LogRegisterService logRegisterService;
 
+  /**
+   * loginController
+   *
+   */
+  @GetMapping("/login")
+  public String getLoginForm(Model model){
+    return "login";
+  }
 
   /**
    * homeController
@@ -100,11 +108,6 @@ public class WebController {
     return "registrationComplete";
   }
 
-  @GetMapping("/login")
-  public String getLogin(Model model){
-    return "login";
-  }
-
   @GetMapping("/accountInput")
   public String getAccountInput(Model model){
     return "accountInput";
@@ -114,20 +117,20 @@ public class WebController {
    * accountRegisterController
    */
   @PostMapping("/accountRegister")
-  public String accountText(@RequestParam String userName,@RequestParam String passwordHash,Model model){
+  public String accountText(@RequestParam String userName,@RequestParam String password,Model model){
     model.addAttribute("userName",userName);
-    model.addAttribute("passwordHash",passwordHash);
+    model.addAttribute("password",password);
     return "accountRegister";
   }
   /**
    * accountRegistrationCompleteController
    */
   @PostMapping("/accountRegistrationComplete")
-  public String saveAccountRegistration(@RequestParam String userName,@RequestParam String passwordHash,Model model){
-    int userId = userService.accountRegister(userName,passwordHash);//DB登録処理
+  public String saveAccountRegistration(@RequestParam String userName,@RequestParam String password,Model model){
+    int userId = userService.accountRegister(userName,password);//DB登録処理
     model.addAttribute("userId",userId);
     model.addAttribute("userName",userName);
-    model.addAttribute("passwordHash",passwordHash);
+    model.addAttribute("password",password);
     return "accountRegistrationComplete";
   }
 
