@@ -31,19 +31,22 @@ public class WebSecurityConfig {
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authorizeRequests ->
             authorizeRequests
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+                .permitAll()
                 // loginのパスへのリクエストはすべて許可
-                .requestMatchers("/login").permitAll()
+                .requestMatchers("/login","accountInput").permitAll()
                 // その他のリクエストは認証が必要
                 .anyRequest().authenticated()
         )
         .formLogin(formLogin ->
             formLogin
+                .usernameParameter("userId")
                 // ログイン処理のURLを指定(フロントがログインボタン実行時にPOSTする場所)
                 .loginProcessingUrl("/login")
                 // カスタムログインページのURLを指定(Spring Securityデフォルトの画面を置き換える)
                 .loginPage("/login")
                 // ログイン成功時のリダイレクト先URLを指定
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/home",true)
                 // 認証失敗時のリダイレクト先URLを指定
                 .failureUrl("/error")
         );
