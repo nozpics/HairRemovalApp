@@ -1,5 +1,6 @@
 package com.example.hairremoval.config;
 
+import com.example.hairremoval.entity.HairRemovalLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -16,19 +17,20 @@ import org.springframework.security.core.AuthenticationException;
 @Slf4j
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-//  private static final String FIXED_USERNAME = "test";
-//  private static final String FIXED_PASSWORD = "123";
 
-  @Autowired
-  private UserDetailsService userDetailsService;
+  private final UserDetailsService userDetailsService;
+  private final PasswordEncoder passwordEncoder;
 
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+  public CustomAuthenticationProvider(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+    this.userDetailsService = userDetailsService;
+    this.passwordEncoder = passwordEncoder;
+  }
 
   @Override
   public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
+  HairRemovalLog hairRemovalLog = new HairRemovalLog();
   String username = authentication.getName();
+  hairRemovalLog.setUserId(Integer.parseInt(username));
   String inputPassword = (String) authentication.getCredentials();
   log.info("userName");
   log.info(username);
@@ -36,12 +38,14 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
   log.info(inputPassword);
     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
+
+
   if(passwordEncoder.matches(inputPassword, userDetails.getPassword())){
     return new UsernamePasswordAuthenticationToken(username,inputPassword,userDetails.getAuthorities());
   }else {
     throw new BadCredentialsException("Authentication failed");
   }
-}
+  }
 
   @Override
   public boolean supports(Class<?> authentication) {

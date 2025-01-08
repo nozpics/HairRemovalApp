@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,12 +55,13 @@ public class WebController {
    */
   @GetMapping("/home")
   public String getHome(Model model){
-    int userId=1;
+    int userId = userService.getLoggedInUser();
     User user = userService.getUserById(userId);
     model.addAttribute("user",user);
-
     List<NextSchedule> nextSchedule = nextScheduleService.selectByUserId(userId);
     model.addAttribute("nextSchedule",nextSchedule);
+    log.info("userId");
+    log.info(String.valueOf(userId));
 
     return "home";
   }
@@ -69,7 +72,7 @@ public class WebController {
    */
   @GetMapping("/logList")
   public String getLogList(Model model){
-    int userId=1;
+    int userId = userService.getLoggedInUser();
     List<HairRemovalLog> hairRemovalLog = hairRemovalLogService.getHairRemovalLogByUserID(userId);
     model.addAttribute("hairRemovalLog",hairRemovalLog);
     return "logList";
@@ -90,12 +93,14 @@ public class WebController {
    */
   @PostMapping("/logRegister")
   public String registerText(@RequestParam LocalDate date,@RequestParam String bodyPart,@RequestParam LocalDate nextDate,Model model){
-    int userId=1;
+    int userId = userService.getLoggedInUser();
     int sessionCount =hairRemovalLogService.getSessionCount(userId, bodyPart); //脱毛回数の取得
     model.addAttribute("date",date);
     model.addAttribute("bodyPart",bodyPart);
     model.addAttribute("nextDate",nextDate);
     model.addAttribute("sessionCount",sessionCount);
+    log.info("userId");
+    log.info(String.valueOf(userId));
     return "logRegister";
   }
 
@@ -151,7 +156,7 @@ public String getAccountUpdateInput(Model model){
 
   @PostMapping("/accountUpdateComplete")
   public String saveAccountUpdate(@RequestParam String userName,@RequestParam String passwordHash,Model model){
-    int userId=1;
+    int userId = userService.getLoggedInUser();
     model.addAttribute("userId",userId);
     model.addAttribute("userName",userName);
     model.addAttribute("passwordHash",passwordHash);

@@ -8,6 +8,7 @@ import com.example.hairremoval.entity.UserIdSequence;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -46,5 +47,10 @@ public class UserService {
 
   public void saveUserUpdate(int userId,String userName,String password){
     userDao.updateUser(userId,userName,password);
+  }
+
+  public int getLoggedInUser(){
+
+    return Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
   }
 }

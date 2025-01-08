@@ -18,8 +18,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-  @Autowired
-  private CustomAuthenticationProvider customAuthenticationProvider;
+
+private final CustomAuthenticationProvider customAuthenticationProvider;
+
+   public WebSecurityConfig(CustomAuthenticationProvider customAuthenticationProvider){
+           this.customAuthenticationProvider = customAuthenticationProvider;
+       }
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
@@ -34,7 +38,7 @@ public class WebSecurityConfig {
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
                 // loginのパスへのリクエストはすべて許可
-                .requestMatchers("/login","accountInput").permitAll()
+                .requestMatchers("/login","accountInput","accountRegister","accountRegistrationComplete").permitAll()
                 // その他のリクエストは認証が必要
                 .anyRequest().authenticated()
         )
@@ -67,9 +71,4 @@ public class WebSecurityConfig {
       source.registerCorsConfiguration("/**",configuration);
       return source;
     }
-
-  @Bean
-  public PasswordEncoder passwordEncoder(){
-    return new BCryptPasswordEncoder();
-  }
 }
