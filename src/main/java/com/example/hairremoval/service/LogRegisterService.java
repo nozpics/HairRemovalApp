@@ -21,11 +21,12 @@ public class LogRegisterService {
   private BodyPartDao bodyPartDao;
   @Autowired
   private NextScheduleDao nextScheduleDao;
-
+  @Autowired
+  private UserService userService;
   public void logRegister(LocalDate date, String bodyPart,LocalDate nextDate,int sessionCount) {
     HairRemovalLog hairRemovalLog = new HairRemovalLog();
     NextSchedule nextSchedule = new NextSchedule();
-    int userId = 1;
+    int userId = userService.getLoggedInUser();
 
     //部位コードを設定
     String bodyCode = bodyPartDao.selectByCode(bodyPart);

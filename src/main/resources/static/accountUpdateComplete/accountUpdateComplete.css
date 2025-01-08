@@ -1,0 +1,20 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #eeffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main {
+    padding:20px;
+}
+.header h1{
+    margin: 0;
+}
+
+.homeLink{
+ margin-top:20px;
+}

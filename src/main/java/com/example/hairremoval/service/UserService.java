@@ -46,7 +46,8 @@ public class UserService {
   }
 
   public void saveUserUpdate(int userId,String userName,String password){
-    userDao.updateUser(userId,userName,password);
+    String passwordHash=passwordEncoder.encode(password);
+    userDao.updateUser(userId,userName,passwordHash);
   }
 
   public int getLoggedInUser(){

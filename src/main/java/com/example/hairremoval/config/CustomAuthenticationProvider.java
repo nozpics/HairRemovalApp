@@ -28,9 +28,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
   @Override
   public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-  HairRemovalLog hairRemovalLog = new HairRemovalLog();
+
   String username = authentication.getName();
-  hairRemovalLog.setUserId(Integer.parseInt(username));
   String inputPassword = (String) authentication.getCredentials();
   log.info("userName");
   log.info(username);

@@ -148,19 +148,19 @@ public String getAccountUpdateInput(Model model){
 }
 
   @PostMapping("/accountUpdateCheck")
-  public String checkAccountUpdate(@RequestParam String userName,@RequestParam String passwordHash,Model model){
+  public String checkAccountUpdate(@RequestParam String userName,@RequestParam String password,Model model){
     model.addAttribute("userName",userName);
-    model.addAttribute("passwordHash",passwordHash);
+    model.addAttribute("password",password);
     return "accountUpdateCheck";
   }
 
   @PostMapping("/accountUpdateComplete")
-  public String saveAccountUpdate(@RequestParam String userName,@RequestParam String passwordHash,Model model){
+  public String saveAccountUpdate(@RequestParam String userName,@RequestParam String password,Model model){
     int userId = userService.getLoggedInUser();
     model.addAttribute("userId",userId);
     model.addAttribute("userName",userName);
-    model.addAttribute("passwordHash",passwordHash);
-    userService.saveUserUpdate(userId,userName,passwordHash);
+    model.addAttribute("password",password);
+    userService.saveUserUpdate(userId,userName,password);
     return "accountUpdateComplete";
   }
 }
