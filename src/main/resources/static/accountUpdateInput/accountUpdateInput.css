@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #eeffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1{
+    margin: 0;
+}
+
+main {
+    padding:20px;
+}
+
+.userName{
+    margin-bottom:20px;
+}
+.password{
+    margin-bottom:20px;
+}
+
+.homeLink{
+    margin-top:20px;
+    }

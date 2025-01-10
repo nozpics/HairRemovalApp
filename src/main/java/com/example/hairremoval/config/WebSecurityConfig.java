@@ -37,8 +37,8 @@ private final CustomAuthenticationProvider customAuthenticationProvider;
             authorizeRequests
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
-                // loginのパスへのリクエストはすべて許可
-                .requestMatchers("/login","accountInput","accountRegister","accountRegistrationComplete").permitAll()
+                // 以下のパスへのリクエストはすべて許可
+                .requestMatchers("/login","/accountInput","/accountRegister","/accountRegistrationComplete").permitAll()
                 // その他のリクエストは認証が必要
                 .anyRequest().authenticated()
         )
@@ -51,8 +51,6 @@ private final CustomAuthenticationProvider customAuthenticationProvider;
                 .loginPage("/login")
                 // ログイン成功時のリダイレクト先URLを指定
                 .defaultSuccessUrl("/home",true)
-                // 認証失敗時のリダイレクト先URLを指定
-                .failureUrl("/error")
         );
     return http.build();
   }

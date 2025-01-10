@@ -19,16 +19,21 @@ public class CustomUserDetailsService implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    int userId = Integer.parseInt(username);
-    User user = userService.getUserById(userId);
+    //入力されたユーザーIDが文字列だった場合。
+    if(!username.matches("\\d+")){
+      throw new UsernameNotFoundException("ユーザーIDには、半角数字を入力してください。");
+    }else {
+      int userId = Integer.parseInt(username);
+      User user = userService.getUserById(userId);
 
-    if(user == null){
-      throw new UsernameNotFoundException("User not found: " + username);
-    }
-
+      //入力されたユーザーIDが登録されていなかった場合。
+      if (user == null) {
+        throw new UsernameNotFoundException("ユーザーが見つかりません: " + username);
+      }
     return builder()
         .username(String.valueOf(user.getUserId()))
         .password(user.getPasswordHash())
         .build();
+  }
   }
 }

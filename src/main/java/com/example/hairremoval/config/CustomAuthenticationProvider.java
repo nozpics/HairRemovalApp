@@ -37,12 +37,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
   log.info(inputPassword);
     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-
-
   if(passwordEncoder.matches(inputPassword, userDetails.getPassword())){
     return new UsernamePasswordAuthenticationToken(username,inputPassword,userDetails.getAuthorities());
   }else {
-    throw new BadCredentialsException("Authentication failed");
+    throw new BadCredentialsException("パスワードが間違っています。");
   }
   }
 
