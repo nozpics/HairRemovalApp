@@ -38,7 +38,7 @@ private final CustomAuthenticationProvider customAuthenticationProvider;
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
                 // 以下のパスへのリクエストはすべて許可
-                .requestMatchers("/login","/accountInput","/accountRegister","/accountRegistrationComplete").permitAll()
+                .requestMatchers("/login/**","/accountInput/**","/accountRegister/**","/accountRegistrationComplete/**").permitAll()
                 // その他のリクエストは認証が必要
                 .anyRequest().authenticated()
         )

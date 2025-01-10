@@ -9,6 +9,7 @@ import com.example.hairremoval.service.HairRemovalLogService;
 import com.example.hairremoval.service.LogRegisterService;
 import com.example.hairremoval.service.NextScheduleService;
 import com.example.hairremoval.service.UserService;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @Slf4j
@@ -92,15 +94,20 @@ public class WebController {
    * logRegisterController
    */
   @PostMapping("/logRegister")
-  public String registerText(@RequestParam LocalDate date,@RequestParam String bodyPart,@RequestParam LocalDate nextDate,Model model){
+  public String registerText(@RequestParam LocalDate date, @RequestParam String bodyPart, @RequestParam LocalDate nextDate, RedirectAttributes redirectAttributes,Model model) {
+    
+    if (date.isAfter(nextDate)) {
+      redirectAttributes.addFlashAttribute("errorMessage", "次回脱毛日が脱毛日より前になっています。");
+      return "redirect:/logInput";
+    }
     int userId = userService.getLoggedInUser();
-    int sessionCount =hairRemovalLogService.getSessionCount(userId, bodyPart); //脱毛回数の取得
+    int sessionCount = hairRemovalLogService.getSessionCount(userId, bodyPart);
+
     model.addAttribute("date",date);
     model.addAttribute("bodyPart",bodyPart);
     model.addAttribute("nextDate",nextDate);
     model.addAttribute("sessionCount",sessionCount);
-    log.info("userId");
-    log.info(String.valueOf(userId));
+
     return "logRegister";
   }
 
