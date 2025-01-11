@@ -15,5 +15,9 @@ public class BodyPartService {
     return bodyPartDao.selectAll();
   }
 
+  public String getBodyCode(String bodyPart){
+    return bodyPartDao.selectByCode(bodyPart);
+  }
+
 
 }

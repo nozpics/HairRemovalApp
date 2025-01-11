@@ -25,6 +25,9 @@ public interface HairRemovalLogDao {
   @Select
   HairRemovalLog selectById(int userId, String bodyCode, int sessionCount);
 
+  @Select
+  LocalDate getDate(int userId,String bodyCode);
+
   //部位コードにもとづく回数を取得
   @Select
   int selectSession(int userId,String bodyCode);

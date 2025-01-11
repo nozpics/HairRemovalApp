@@ -23,6 +23,7 @@ public class LogRegisterService {
   private NextScheduleDao nextScheduleDao;
   @Autowired
   private UserService userService;
+
   public void logRegister(LocalDate date, String bodyPart,LocalDate nextDate,int sessionCount) {
     HairRemovalLog hairRemovalLog = new HairRemovalLog();
     NextSchedule nextSchedule = new NextSchedule();

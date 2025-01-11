@@ -18,6 +18,10 @@ public class HairRemovalLogService {
   }
 
   public int getSessionCount(int userId,String bodyCode){
-    return hairRemovalLogDao.selectSession(userId,bodyCode)+1;
+    return hairRemovalLogDao.selectSession(userId,bodyCode);
+  }
+
+  public LocalDate getLogDate(int userId,String bodyCode){
+    return hairRemovalLogDao.getDate(userId,bodyCode);
   }
 }

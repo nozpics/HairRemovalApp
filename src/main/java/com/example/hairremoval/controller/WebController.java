@@ -95,18 +95,28 @@ public class WebController {
    */
   @PostMapping("/logRegister")
   public String registerText(@RequestParam LocalDate date, @RequestParam String bodyPart, @RequestParam LocalDate nextDate, RedirectAttributes redirectAttributes,Model model) {
-    
+
+    int userId = userService.getLoggedInUser();
+    String bodyCode = bodyPartService.getBodyCode(bodyPart);
+    LocalDate logDate = hairRemovalLogService.getLogDate(userId,bodyCode);
+    int sessionCount = hairRemovalLogService.getSessionCount(userId, bodyPart);
+
     if (date.isAfter(nextDate)) {
-      redirectAttributes.addFlashAttribute("errorMessage", "次回脱毛日が脱毛日より前になっています。");
+      redirectAttributes.addFlashAttribute("errorMessage", "次回脱毛日が脱毛日より前の日付になっています。");
       return "redirect:/logInput";
     }
-    int userId = userService.getLoggedInUser();
-    int sessionCount = hairRemovalLogService.getSessionCount(userId, bodyPart);
+
+    if(date.isBefore(logDate)){
+      redirectAttributes.addFlashAttribute(
+          "errorMessage",
+          "過去データより前の日付が指定されています：『" + date+ "』『" + bodyPart +"』");
+      return "redirect:/logInput";
+    }
 
     model.addAttribute("date",date);
     model.addAttribute("bodyPart",bodyPart);
     model.addAttribute("nextDate",nextDate);
-    model.addAttribute("sessionCount",sessionCount);
+    model.addAttribute("sessionCount",sessionCount+1);
 
     return "logRegister";
   }
