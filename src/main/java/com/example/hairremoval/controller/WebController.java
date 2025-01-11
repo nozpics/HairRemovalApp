@@ -12,6 +12,7 @@ import com.example.hairremoval.service.UserService;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -98,19 +99,21 @@ public class WebController {
 
     int userId = userService.getLoggedInUser();
     String bodyCode = bodyPartService.getBodyCode(bodyPart);
-    LocalDate logDate = hairRemovalLogService.getLogDate(userId,bodyCode);
+
     int sessionCount = hairRemovalLogService.getSessionCount(userId, bodyPart);
 
     if (date.isAfter(nextDate)) {
       redirectAttributes.addFlashAttribute("errorMessage", "次回脱毛日が脱毛日より前の日付になっています。");
       return "redirect:/logInput";
     }
-
-    if(date.isBefore(logDate)){
-      redirectAttributes.addFlashAttribute(
+    if (sessionCount != 0) {
+      LocalDate logDate = hairRemovalLogService.getLogDate(userId,bodyCode);
+      if(date.isBefore(logDate)){
+        redirectAttributes.addFlashAttribute(
           "errorMessage",
           "過去データより前の日付が指定されています：『" + date+ "』『" + bodyPart +"』");
       return "redirect:/logInput";
+    }
     }
 
     model.addAttribute("date",date);
