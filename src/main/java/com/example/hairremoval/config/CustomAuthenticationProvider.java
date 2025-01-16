@@ -2,8 +2,10 @@ package com.example.hairremoval.config;
 
 import com.example.hairremoval.entity.HairRemovalLog;
 import lombok.extern.slf4j.Slf4j;
+import org.seasar.doma.jdbc.JdbcException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +30,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
   @Override
   public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
+  try {
   String username = authentication.getName();
   String inputPassword = (String) authentication.getCredentials();
   log.info("userName");
@@ -42,8 +44,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
   }else {
     throw new BadCredentialsException("パスワードが間違っています。");
   }
+  } catch (JdbcException e){
+    throw new AuthenticationServiceException("データベース接続エラーです。application.ymlのdatasourceが正しいか確認してください。");
   }
-
+}
   @Override
   public boolean supports(Class<?> authentication) {
     // authentication(認証方式)がUsernamePasswordAuthenticationToken.class(ユーザー名とパスワード認証)か判定
