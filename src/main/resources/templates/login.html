@@ -26,6 +26,7 @@
     <div class="login">
       <button type="submit">ログイン</button></div>
   </form>
+  <p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></p>
   <div class="accountInputLink">
     <p>アカウント登録がまだの方はこちら→
     <a href="accountInput">登録</a></p>

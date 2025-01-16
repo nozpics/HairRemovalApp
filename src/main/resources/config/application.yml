@@ -21,7 +21,7 @@ spring:
   datasource:
     jdbcUrl: jdbc:mysql://localhost:3306/hairremoval_app
     username: root
-    password: 55730
+    password: 5573
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 10
