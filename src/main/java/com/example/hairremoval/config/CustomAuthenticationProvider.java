@@ -1,6 +1,6 @@
 package com.example.hairremoval.config;
 
-import com.example.hairremoval.utils.PropertyUtils;
+import com.example.hairremoval.utils.MessageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.seasar.doma.jdbc.JdbcException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,6 @@ import org.springframework.security.core.AuthenticationException;
 @Component
 @Slf4j
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-  @Autowired
-  private PropertyUtils propertyUtils;
 
   private final UserDetailsService userDetailsService;
   private final PasswordEncoder passwordEncoder;
@@ -44,10 +42,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
       if(passwordEncoder.matches(inputPassword, userDetails.getPassword())){
         return new UsernamePasswordAuthenticationToken(username,inputPassword,userDetails.getAuthorities());
       }else {
-        throw new BadCredentialsException(propertyUtils.getMessage("errorPasswordMessage"));
+        throw new BadCredentialsException(MessageUtils.getMessage("errorPasswordMessage"));
       }
     } catch (JdbcException e){
-      throw new AuthenticationServiceException(propertyUtils.getMessage("JdbcExceptionMessage"));
+      throw new AuthenticationServiceException(MessageUtils.getMessage("JdbcExceptionMessage"));
     }
   }
   @Override
