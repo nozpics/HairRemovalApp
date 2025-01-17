@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  *
  * Application起動時にmessages.propertiesを取得する
  *
- *
  */
 @Component
 public class MessageUtils {

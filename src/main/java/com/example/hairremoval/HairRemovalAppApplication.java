@@ -20,20 +20,7 @@ public class HairRemovalAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HairRemovalAppApplication.class, args);
 	}
-	/**
-	 * LogFilterの設定
-	 * @return
-	 */
-//	@Bean
-//	public FilterRegistrationBean logFilter(){
-//		//フィルタのオブジェクトを1番目に実行するフィルタとして追加
-//		FilterRegistrationBean bean = new FilterRegistrationBean(new RestApiLoggingFilter());
-//		//コントローラ・静的コンテンツ全てのリクエストに対してフィルタを有効化
-//		bean.addUrlPatterns("/api/*");
-//		//フィルタの実行順序を1に設定
-//		bean.setOrder(1);
-//		return bean;
-//	}
+
 
 	/**
 	 * データソース Application.ymlに接続文字列を記載

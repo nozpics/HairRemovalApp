@@ -45,7 +45,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         throw new BadCredentialsException(MessageUtils.getMessage("errorPasswordMessage"));
       }
     } catch (JdbcException e){
-      throw new AuthenticationServiceException(MessageUtils.getMessage("JdbcExceptionMessage"));
+      throw new AuthenticationServiceException(MessageUtils.getMessage("jdbcExceptionMessage"));
     }
   }
   @Override

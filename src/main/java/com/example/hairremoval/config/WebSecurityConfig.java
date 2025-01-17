@@ -55,9 +55,6 @@ private final CustomAuthenticationProvider customAuthenticationProvider;
     return http.build();
   }
 
-
-
-
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource(){
       CorsConfiguration configuration = new CorsConfiguration();

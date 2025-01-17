@@ -9,6 +9,7 @@ import com.example.hairremoval.service.HairRemovalLogService;
 import com.example.hairremoval.service.LogRegisterService;
 import com.example.hairremoval.service.NextScheduleService;
 import com.example.hairremoval.service.UserService;
+import com.example.hairremoval.utils.MessageUtils;
 import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -108,15 +109,14 @@ public class WebController {
     int sessionCount = hairRemovalLogService.getSessionCount(userId, bodyPart);
 
     if (date.isAfter(nextDate)) {
-      redirectAttributes.addFlashAttribute("errorMessage", "次回脱毛日が脱毛日より前の日付になっています。");
+      redirectAttributes.addFlashAttribute("errorMessage", MessageUtils.getMessage("nextDateErrorMessage"));
       return "redirect:/logInput";
     }
     if (sessionCount != 0) {
       LocalDate logDate = hairRemovalLogService.getLogDate(userId,bodyCode);
       if(date.isBefore(logDate)){
         redirectAttributes.addFlashAttribute(
-          "errorMessage",
-          "過去データより前の日付が指定されています：『" + date+ "』『" + bodyPart +"』");
+          "errorMessage", MessageUtils.getMessage("dateLogErrorMessage"));
       return "redirect:/logInput";
     }
     }
