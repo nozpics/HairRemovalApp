@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: hairremoval_app
       MYSQL_USER: hairremoval
-      MYSQL_PASSWORD: 55730
+      MYSQL_PASSWORD: hairremoval_app
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -25,9 +25,10 @@ services:
     depends_on:
       - mysql
     environment:
+      PROFILE: docker
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/hairremoval_app
       SPRING_DATASOURCE_USERNAME: hairremoval
-      SPRING_DATASOURCE_PASSWORD: 55730
+      SPRING_DATASOURCE_PASSWORD: hairremoval_app
     networks:
       - app-network
 
