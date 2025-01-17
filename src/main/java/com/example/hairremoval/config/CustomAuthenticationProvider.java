@@ -1,6 +1,6 @@
 package com.example.hairremoval.config;
 
-import com.example.hairremoval.entity.HairRemovalLog;
+import com.example.hairremoval.utils.PropertyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.seasar.doma.jdbc.JdbcException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,8 @@ import org.springframework.security.core.AuthenticationException;
 @Component
 @Slf4j
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-
+  @Autowired
+  private PropertyUtils propertyUtils;
 
   private final UserDetailsService userDetailsService;
   private final PasswordEncoder passwordEncoder;
@@ -30,24 +31,25 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
   @Override
   public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-  try {
-  String username = authentication.getName();
-  String inputPassword = (String) authentication.getCredentials();
-  log.info("userName");
-  log.info(username);
-  log.info("inputPassword");
-  log.info(inputPassword);
-    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+    try {
 
-  if(passwordEncoder.matches(inputPassword, userDetails.getPassword())){
-    return new UsernamePasswordAuthenticationToken(username,inputPassword,userDetails.getAuthorities());
-  }else {
-    throw new BadCredentialsException("パスワードが間違っています。");
+      String username = authentication.getName();
+      String inputPassword = (String) authentication.getCredentials();
+      log.info("userName");
+      log.info(username);
+      log.info("inputPassword");
+      log.info(inputPassword);
+      UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+      if(passwordEncoder.matches(inputPassword, userDetails.getPassword())){
+        return new UsernamePasswordAuthenticationToken(username,inputPassword,userDetails.getAuthorities());
+      }else {
+        throw new BadCredentialsException(propertyUtils.getMessage("errorPasswordMessage"));
+      }
+    } catch (JdbcException e){
+      throw new AuthenticationServiceException(propertyUtils.getMessage("JdbcExceptionMessage"));
+    }
   }
-  } catch (JdbcException e){
-    throw new AuthenticationServiceException("データベース接続エラーです。application.ymlのdatasourceが正しいか確認してください。");
-  }
-}
   @Override
   public boolean supports(Class<?> authentication) {
     // authentication(認証方式)がUsernamePasswordAuthenticationToken.class(ユーザー名とパスワード認証)か判定

@@ -188,11 +188,4 @@ public String getAccountUpdateInput(Model model){
     userService.saveUserUpdate(userId,userName,password);
     return "accountUpdateComplete";
   }
-
-
-  @ExceptionHandler(JdbcException.class)
-  public String databaseConnectionError(RedirectAttributes redirectAttributes){
-    redirectAttributes.addFlashAttribute("errorMessage","データベース接続エラーです。application.ymlのusername,passwordを確認してください。");
-    return "redirect:/login";
-  }
 }
