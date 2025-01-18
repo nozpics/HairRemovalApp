@@ -9,6 +9,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/**
+ * UserDetailsServiceインターフェースを実装し、
+ * ユーザー認証に必要な情報を提供するサービスクラス
+ */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -19,6 +23,12 @@ public class CustomUserDetailsService implements UserDetailsService {
   }
 
 
+  /**
+   *指定されたユーザー名（ユーザーID）で認証で使用する情報を読み込む
+   * @param username ユーザー名（ユーザーID）
+   * @return 認証に使用される情報
+   * @throws UsernameNotFoundException 無効なユーザーIDの場合にスローされる
+   */
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     //入力されたユーザーIDが文字列だった場合。

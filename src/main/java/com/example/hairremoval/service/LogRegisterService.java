@@ -24,6 +24,13 @@ public class LogRegisterService {
   @Autowired
   private UserService userService;
 
+  /**
+   * 履歴登録
+   * @param date　入力した脱毛日
+   * @param bodyPart　入力した脱毛部位
+   * @param nextDate　入力した次回予定日
+   * @param sessionCount　今回を含めた脱毛回数
+   */
   public void logRegister(LocalDate date, String bodyPart,LocalDate nextDate,int sessionCount) {
     HairRemovalLog hairRemovalLog = new HairRemovalLog();
     NextSchedule nextSchedule = new NextSchedule();

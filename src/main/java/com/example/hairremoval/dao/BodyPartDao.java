@@ -29,9 +29,4 @@ public interface BodyPartDao {
   @Update(sqlFile = true)
   int update(BodyPart bodyPart);
 
-  //名前に基づいて脱毛部位を検索する
-  //複数の結果が返される可能性があるためList
-  @Select
-  List<BodyPart> selectByName(String name);
-
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * MessageUtils
- *
  * Application起動時にmessages.propertiesを取得する
  *
  */

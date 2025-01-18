@@ -14,6 +14,7 @@ public interface UserIdSequenceDao {
   @Select
   int selectById();
 
+  //ユーザーIDを登録
   @Insert
   int setById(UserIdSequence userIdSequence);
 }

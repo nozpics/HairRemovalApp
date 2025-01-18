@@ -23,8 +23,8 @@ public class HairRemovalAppApplication {
 
 
 	/**
-	 * データソース Application.ymlに接続文字列を記載
-	 * @return
+	 * アプリケーションで使用するデータソースを設定
+	 * @return 設定されたHikariDataSourceのインスタンス
 	 */
 	@Bean(name = "dataSource")
 	@ConfigurationProperties("spring.datasource")
@@ -34,7 +34,7 @@ public class HairRemovalAppApplication {
 
 	/**
 	 * トランザクションマネージャー
-	 * @return
+	 * @return DataSourceTransactionManagerのインスタンス
 	 */
 	@Bean(name = "datasourcemanager")
 	public DataSourceTransactionManager dataSourceTransactionManager(@Qualifier("dataSource")DataSource dataSource){

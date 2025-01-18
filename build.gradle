@@ -14,9 +14,6 @@ group = 'com.app'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
-//processResources.destinationDir = compileJava.destinationDir
-//compileJava.dependsOn processResources
-
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor

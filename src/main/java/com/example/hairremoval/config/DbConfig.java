@@ -14,7 +14,10 @@ import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-  @EnableTransactionManagement
+/**
+ * データベース設定クラス
+ */
+@EnableTransactionManagement
   @Component
   @Scope("singleton")
   @Primary
@@ -25,6 +28,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     private SqlFileRepository sqlFileRepository = new NoCacheSqlFileRepository();
 
     private DataSource dataSource;
+
 
     @Autowired
     public void setDataSource(@Qualifier("dataSource") DataSource dataSource) {

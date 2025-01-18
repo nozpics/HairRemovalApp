@@ -1,7 +1,6 @@
 package com.example.hairremoval.dao;
 
 import com.example.hairremoval.config.DomaInjectConfig;
-import com.example.hairremoval.entity.BodyPart;
 import com.example.hairremoval.entity.HairRemovalLog;
 import java.time.LocalDate;
 import java.util.List;
@@ -13,18 +12,11 @@ import org.seasar.doma.Select;
 @DomaInjectConfig
 public interface HairRemovalLogDao {
 
-  //データベースから全ての履歴情報を取得する
-  @Select
-  List<HairRemovalLog> selectAll();
-
   //特定のユーザーIDに関する全ての履歴を取得
   @Select
   List<HairRemovalLog> selectByUserId(int userId);
 
-  //主キーに基づいて特定の履歴を取得
-  @Select
-  HairRemovalLog selectById(int userId, String bodyCode, int sessionCount);
-
+  //該当部位の最新の脱毛日を取得
   @Select
   LocalDate getDate(int userId,String bodyCode);
 

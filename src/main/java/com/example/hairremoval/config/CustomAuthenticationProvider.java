@@ -3,7 +3,6 @@ package com.example.hairremoval.config;
 import com.example.hairremoval.utils.MessageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.seasar.doma.jdbc.JdbcException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,6 +14,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
+/**
+ * ユーザー名とパスワードによる認証を処理するプロバイダークラス
+ */
 @Component
 @Slf4j
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -27,6 +29,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     this.passwordEncoder = passwordEncoder;
   }
 
+  /**
+   * 認証処理
+   * @param authentication 認証情報
+   * @return 認証済みのAuthenticationオブジェクト
+   * @throws AuthenticationException 認証にした場合
+   */
   @Override
   public Authentication authenticate(Authentication authentication) throws AuthenticationException {
     try {
@@ -48,6 +56,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
       throw new AuthenticationServiceException(MessageUtils.getMessage("jdbcExceptionMessage"));
     }
   }
+
   @Override
   public boolean supports(Class<?> authentication) {
     // authentication(認証方式)がUsernamePasswordAuthenticationToken.class(ユーザー名とパスワード認証)か判定
