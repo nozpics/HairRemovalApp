@@ -1,6 +1,6 @@
 ![8FFFB8CB-F622-4642-ACE4-62EF7A69F44B](https://github.com/user-attachments/assets/d41c0926-3c46-4fe7-b132-24722a26e320)
 
-# 開発したきっかけ
+# はじめに
 この脱毛管理アプリは、私自身の経験から生まれました。
 
 現在、私は医療脱毛とセルフ脱毛の両方を行っています。しかし、それぞれで適切な脱毛間隔が異なるため、次に「いつ脱毛すればいいのか」「どの部位を脱毛するべきなのか」をつい忘れてしまうことが多々ありました。また、これまで何回脱毛を行い、その結果どれくらいの効果があったのかを把握するのも難しく、管理が煩雑に感じていました。
@@ -31,6 +31,13 @@
 
 * フロントエンド
   * HTML5/CSS
+
+# 関連ドキュメント
+以下のリンクから、プロジェクトの設計書、データベース定義書および試験項目書にアクセスできます。
+* [設計書](https://docs.google.com/spreadsheets/d/1y1qMBBCGHOze4I1vyNeNbva-8bSsGaGqramEDjo0jDs/edit?usp=sharing)
+* [データベース定義書](https://docs.google.com/spreadsheets/d/1tQvpnpMefkNfkyS0O9bWeYhzyoM6HNFIDp8fy7SJWFg/edit?usp=sharing)
+* [試験項目書(作成中)](https://docs.google.com/spreadsheets/d/1zgcvq9FoXroSk4zTco_YLVrZrTbYQZ2iMO3UWZBS8J8/edit?usp=sharing)
+
 
 # おわりに
 脱毛は時間とコストがかかるプロセスですが、適切な管理ツールがあれば、より効率的かつ効果的に進めることができます。
