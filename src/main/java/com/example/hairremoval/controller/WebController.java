@@ -116,6 +116,11 @@ public class WebController {
       redirectAttributes.addFlashAttribute("errorMessage", MessageUtils.getMessage("nextDateErrorMessage"));
       return "redirect:/logInput";
     }
+    // 入力された脱毛日と次回予定日が同じ日付になっている場合のエラーチェック
+    if (date.isEqual(nextDate)){
+      redirectAttributes.addFlashAttribute("errorMessage",MessageUtils.getMessage("nextDateEqualErrorMessage"));
+      return "redirect:/logInput";
+    }
     // 入力された脱毛日が履歴より前の日付になっている場合のエラーチェック
     if (sessionCount != 0) {
       LocalDate logDate = hairRemovalLogService.getLogDate(userId,bodyCode);
