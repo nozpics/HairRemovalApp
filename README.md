@@ -36,7 +36,7 @@
 以下のリンクから、プロジェクトの設計書、データベース定義書および試験項目書にアクセスできます。
 * [設計書](https://docs.google.com/spreadsheets/d/1y1qMBBCGHOze4I1vyNeNbva-8bSsGaGqramEDjo0jDs/edit?usp=sharing)
 * [データベース定義書](https://docs.google.com/spreadsheets/d/1tQvpnpMefkNfkyS0O9bWeYhzyoM6HNFIDp8fy7SJWFg/edit?usp=sharing)
-* [試験項目書](https://docs.google.com/spreadsheets/d/1zgcvq9FoXroSk4zTco_YLVrZrTbYQZ2iMO3UWZBS8J8/edit?usp=sharing)
+* [試験項目書(作成中)](https://docs.google.com/spreadsheets/d/1zgcvq9FoXroSk4zTco_YLVrZrTbYQZ2iMO3UWZBS8J8/edit?usp=sharing)
 
 
 # おわりに
