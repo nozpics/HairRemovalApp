@@ -13,6 +13,19 @@ CREATE TABLE hairremoval_log(user_id int,date DATE NOT NULL, body_code VARCHAR(5
 
 CREATE TABLE next_schedule(user_id int, body_code VARCHAR(50),next_date DATE,FOREIGN KEY(user_id) REFERENCES users(user_id),FOREIGN KEY(body_code) REFERENCES body_part(body_code));
 
+-- 脱毛部位の登録（個人で脱毛部位の変更可能）
+Insert body_part values('00','上半身');
+Insert body_part values('01','顔');
+Insert body_part values('02','うで');
+Insert body_part values('03','わき');
+Insert body_part values('04','胸');
+Insert body_part values('05','へそ周り');
+Insert body_part values('10','下半身');
+Insert body_part values('11','もも');
+Insert body_part values('12','すね');
+Insert body_part values('13','VIO');
+Insert body_part values('16','全身');
+
 
 -- アプリ用のユーザーの作成
 CREATE USER 'hairremoval'@'localhost' IDENTIFIED BY 'hairremoval_app';
